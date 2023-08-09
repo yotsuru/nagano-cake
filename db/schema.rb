@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2023_08_09_091727) do
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -63,6 +65,8 @@ ActiveRecord::Schema.define(version: 2023_08_09_091727) do
   end
 
   add_foreign_key "addresses", "customers"
+  add_foreign_key "cart_items", "customers"
+  add_foreign_key "cart_items", "items"
   add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "customers"
