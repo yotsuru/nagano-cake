@@ -12,6 +12,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
+    resource :customers, only: [:show, :update, :edit]
+    get '/customers/mypage' => 'customers#show'
   end
+  
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
