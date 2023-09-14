@@ -12,8 +12,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    resource :customers, only: [:show, :update, :edit]
+    #resource :customers, only: [:show, :update, :edit]
     get '/customers/mypage' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
   end
   
   
