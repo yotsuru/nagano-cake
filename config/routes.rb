@@ -15,6 +15,7 @@ namespace :public do
     #resource :customers, only: [:show, :update, :edit]
     get '/customers/mypage' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
+    patch '/customers' => 'customers#update', as: '/customers'
   end
   
   
