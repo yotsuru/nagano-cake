@@ -9,6 +9,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 
+namespace :admin do
+    resources :items
+  end
+
 namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
