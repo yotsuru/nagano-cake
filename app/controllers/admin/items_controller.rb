@@ -9,4 +9,10 @@ class Admin::ItemsController < ApplicationController
       @item.save
       
     end
+    
+    private
+ 
+    def product_params
+      params.require(:item).permit(:image,:name,:introduction,:price,)
+    end
 end
