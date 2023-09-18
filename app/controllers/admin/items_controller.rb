@@ -10,9 +10,16 @@ class Admin::ItemsController < ApplicationController
       
     end
     
+    def index
+      @items = Item.all    
+    end
+    
+    def show
+    end
+    
     private
  
-    def product_params
-      params.require(:item).permit(:image,:name,:introduction,:price,)
+    def item_params
+      params.require(:item).permit(:image,:name,:introduction,:price)
     end
 end
