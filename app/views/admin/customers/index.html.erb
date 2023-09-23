@@ -24,7 +24,7 @@
               <%= customer.email %>
             </td>
             <td>
-              <% if customer.delete == false %>
+              <% if customer.is_valid == true %>
                 退会済み
               <% else %>
                 有効
