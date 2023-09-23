@@ -11,6 +11,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
 namespace :admin do
     resources :items
+    resources :customers,only: [:index,:show,:edit,:update]
   end
 
 namespace :public do
