@@ -20,6 +20,8 @@ namespace :public do
     get '/customers/mypage' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update_customer'
+    
+    resources :items,only: [:index,:show]
   end
   
   
