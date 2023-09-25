@@ -23,6 +23,9 @@ namespace :public do
     patch '/customers' => 'customers#update', as: 'update_customer'
     
     resources :items,only: [:index,:show]
+    
+    resources :cart_items,only: [:index,:update,:create,:destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
   
   
