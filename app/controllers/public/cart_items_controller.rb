@@ -8,12 +8,25 @@ class Public::CartItemsController < ApplicationController
     
     def update
      @cart_item.update(amount: params[:cart_item][:amount].to_i)
-     @price = sub_price(@cart_item).to_s(:delimited)
      @cart_items = current_cart
-     @total = total_price(@cart_items).to_s(:delimited)
     end
 
+    def create
+     @cart_item = current_cart.new(cart_item_params)
+     @post_image.user_id = current_user.id
+     @post_image.save
+     redirect_to post_images_path
+    end
 
+    def destroy
+     current_customer.cart_items.find(params[:id]).destroy
+     redirect_to cart_items_path
+    end
+
+    def destroy_all
+     current_customer.cart_items.destroy_all
+     redirect_to cart_items_path
+    end
 
 
 private
