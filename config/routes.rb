@@ -14,7 +14,7 @@ namespace :admin do
     
     resources :customers,only: [:index,:show,:edit,:update]
     
-    resources :orders,only: [:index,:show,:update]
+    resources :orders,only: [:index,:show]
   end
 
 namespace :public do
