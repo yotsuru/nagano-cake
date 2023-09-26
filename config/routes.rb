@@ -31,6 +31,8 @@ namespace :public do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     
     resources :orders,only: [:new,:index,:show,:create]
+    get 'orders/complete' => "orders#complete"
+    post 'orders/confirm'
   end
   
   

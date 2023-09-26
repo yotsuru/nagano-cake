@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
     
-    before_action :authenticate_public!
+    before_action :authenticate_customer!
     
     def new
   	  @order = Order.new
-  	end
+    end
     
     def create
       @order = current_customer.orders.new(order_params)
@@ -17,6 +17,12 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.first_name + current_customer.last_name
     end
+    
+    def show
+	  @order = Order.find(params[:id])
+      @order_details = @order.order_details
+    end
+
  
 
 
