@@ -11,7 +11,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
 namespace :admin do
     resources :items
+    
     resources :customers,only: [:index,:show,:edit,:update]
+    
+    resources :orders,only: [:index,:show,:update]
   end
 
 namespace :public do
@@ -26,6 +29,8 @@ namespace :public do
     
     resources :cart_items,only: [:index,:update,:create,:destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    
+    resources :orders,only: [:new,:index,:show,:create]
   end
   
   
