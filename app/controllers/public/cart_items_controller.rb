@@ -3,8 +3,8 @@ class Public::CartItemsController < ApplicationController
     before_action :authenticate_customer!
 
     def index
-     @cart_items = current_customer.cart_items
-     @cart_items = current_cart
+     #@cart_items = current_customer.cart_items
+     @cart_items = current_customer
     end
     
     def update
