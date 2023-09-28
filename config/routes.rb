@@ -23,15 +23,15 @@ namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
     
-    resource :customers, only: [:show, :update, :edit]
+    resources :customers,only: [:show, :edit, :update] do
     get '/customers/mypage' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update_customer'
-    　　collection do
-       　get 'confirm_withdraw'
-       　patch 'withdraw'
+       collection do
+         get 'confirm_withdraw'
+         patch 'withdraw'
         end
-   
+      end
     
     resources :items,only: [:index,:show]
     
