@@ -10,20 +10,28 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
 
 namespace :admin do
-    resources :items
+    resources :items,only: [:index,:new,:create,:show,:edit,:update]
     
     resources :customers,only: [:index,:show,:edit,:update]
     
-    resources :orders,only: [:index,:show]
+    resources :orders,only: [:index,:show,:update]
+    
+    
   end
 
 namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    #resource :customers, only: [:show, :update, :edit]
+    
+    resource :customers, only: [:show, :update, :edit]
     get '/customers/mypage' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update_customer'
+    　　collection do
+       　get 'confirm_withdraw'
+       　patch 'withdraw'
+        end
+   
     
     resources :items,only: [:index,:show]
     
