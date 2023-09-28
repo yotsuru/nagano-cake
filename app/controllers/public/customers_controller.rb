@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
     
+    before_action :authenticate_customer!
+    
     def show
       @customer = current_customer
     end
@@ -16,6 +18,18 @@ class Public::CustomersController < ApplicationController
         else
         render 'edit'
         end
+    end
+    
+    def confirm_withdraw
+       @customer = Customer.find(params[:id])
+    end
+    
+    def withdraw
+       @customer = Customer.find(params[:id])
+       @customer.update(is_valid: false)
+       reset_session
+       flash[:notice] = "退会処理を実行いたしました"
+       redirect_to root_path
     end
     
     private
