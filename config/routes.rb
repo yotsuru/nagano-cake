@@ -24,8 +24,8 @@ namespace :public do
     get '/about' => 'homes#about'
     
     resources :customers,only: [:show, :edit, :update] do
-    get '/customers/mypage' => 'customers#show'
-    get '/customers/information/edit' => 'customers#edit'
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update_customer'
        collection do
          get 'confirm_withdraw'
@@ -38,9 +38,12 @@ namespace :public do
     resources :cart_items,only: [:index,:update,:create,:destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     
-    resources :orders,only: [:new,:index,:show,:create]
-    get 'orders/complete' => "orders#complete"
-    post 'orders/confirm'
+    resources :orders,only: [:new,:index,:show,:create] do
+       collection do
+          post 'confirm'
+          get 'complete'
+        end
+      end
   end
   
   
