@@ -23,11 +23,11 @@ namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
     
-    resources :customers,only: [:show, :edit, :update] do
-    get 'customers/mypage' => 'customers#show'
-    get 'customers/information/edit' => 'customers#edit'
-    patch '/customers' => 'customers#update', as: 'update_customer'
-       collection do
+    resources :customers,only: [:update] do
+        collection do
+         get 'customers/mypage' => 'customers#show'
+         get 'customers/information/edit' => 'customers#edit'
+         patch '/customers' => 'customers#update', as: 'update_customer'
          get 'confirm_withdraw'
          patch 'withdraw'
         end

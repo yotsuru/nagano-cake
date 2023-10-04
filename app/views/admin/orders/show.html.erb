@@ -4,3 +4,33 @@
 注文日<%= @order.created_at %>
 配送先<%= @order.address%>
 支払い方法<%= @order.payment_method %>
+
+<table>
+		<thead>
+			<tr>
+			   <th>商品名</th>
+			   <th>単価（税込）</th>
+			   <th>数量</th>
+			   <th>小計</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		<% @order_details.each do |order_detail| %>
+					<tr>
+			            <td>
+			              <%= order_detail.item.name %>
+			            </td>
+			            <td>
+			              <%= price(order_detail.item.price).to_s(:delimited) %>
+			            </td>
+			            <td>
+			              <%= order_detail.amount %>
+			            </td>
+			            <td>
+			              <%= total_price(order_detail).to_s(:delimited) %>
+			            </td>
+			        </tr>
+				<% end %>
+		</tbody>
+</table>
