@@ -1,11 +1,20 @@
 <h2>商品一覧</h2>
 (全<%= @items.count %>件)
 
-<div>
-   <% @items.each do |item| %>
-    <p>商品名：<%= item.name %></p>
-    <p>¥：<%= item.price %></p>
-</div>
-<% end %>
+
+
+<% @items.each do |item| %>
+          
+           
+              <%= link_to public_item_path(item) do %>
+              <%= image_tag 'no_image', size: "180x130" %>
+               
+              <% end %>
+              
+              <%= item.name %>
+              ¥<%= (item.with_tax_price).floor.to_s(:delimited)%>(税込)
+            
+          <% end %>
+        
 
 <%= paginate(@items) %>
