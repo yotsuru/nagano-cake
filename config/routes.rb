@@ -20,7 +20,7 @@ namespace :admin do
   end
 
 namespace :public do
-    get '/' => 'homes#top'
+    # get '/' => 'homes#top'
     get '/about' => 'homes#about'
     
     resources :customers,only: [:update] do
@@ -46,6 +46,7 @@ namespace :public do
       end
   end
   
+  root to: "public/homes#top"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
