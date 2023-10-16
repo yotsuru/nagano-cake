@@ -14,7 +14,7 @@ protected
     if customer_signed_in?
       root_path
     else
-      admin_orders_path 
+      admin_orders_path
     end
   end
   
