@@ -2,6 +2,10 @@ class Public::OrdersController < ApplicationController
     
     before_action :authenticate_customer!
     
+    def index
+      @orders = current_customer.orders.all
+    end
+
     def new
   	  @order = Order.new
     end
