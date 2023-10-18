@@ -18,20 +18,17 @@ class Public::OrdersController < ApplicationController
     end
     
     def create
-
-      # カートの商品を確定済みテーブルに移動させる
-      current_customer.cart_items.each do |ci|
-        # ロジック
-      end
-      
       @order = current_customer.orders.new(order_params)
       @order.save
       flash[:notice] = "ご注文が確定しました。"
       redirect_to public_orders_complete_path
+      # カートの商品を確定済みテーブルに移動させる
+      current_customer.cart_items.each do |cart_item|
+      # ロジック
     end
-    
+   
     def complete
-	  end
+    end
 
     def show
 	    @order = Order.find(params[:id])
