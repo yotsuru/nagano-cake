@@ -37,8 +37,8 @@ namespace :public do
     
     resources :items,only: [:index,:show]
     
-    resources :cart_items,only: [:index,:update,:create,:destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items,only: [:index,:update,:create,:destroy]
     
     resources :orders,only: [:new,:index,:show,:create] do
        collection do
