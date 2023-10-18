@@ -8,9 +8,11 @@
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
-<% end %>
 
 <h3>お届け先</h3>
 <h4>ご自身の住所</h4>
 <%= "#{current_customer.postal_code} #{current_customer.address}" %><br>
 <%= "#{current_customer.last_name} #{current_customer.first_name}" %>
+
+<%= f.submit "確認画面へ進む" %>
+<% end %>

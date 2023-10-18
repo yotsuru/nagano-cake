@@ -22,7 +22,6 @@ class Public::OrdersController < ApplicationController
       @order.save
       flash[:notice] = "ご注文が確定しました。"
       redirect_to public_orders_complete_path
-
     end
     
     def complete
@@ -32,8 +31,6 @@ class Public::OrdersController < ApplicationController
 	    @order = Order.find(params[:id])
       @order_details = @order.order_details
     end
-
- 
 
 
 private

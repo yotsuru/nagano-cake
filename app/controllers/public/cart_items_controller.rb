@@ -26,15 +26,14 @@ class Public::CartItemsController < ApplicationController
     end
 
     def destroy
-     @cart_item.destroy
-     @cart_items = current_cart
+     current_customer.cart_items.find(params[:id]).destroy
      redirect_to public_cart_items_path
     end
 
     def all_destroy
-     @cart_items = current_customer.cart_items
-     @cart_items.destroy_all
-     #flash[:alert] = "カートの商品を全て削除しました"
+     current_customer.cart_items.destroy_all
+     #@cart_items = current_customer.cart_items
+     #@cart_items.destroy_all
      redirect_to public_cart_items_path
 	   end
 
