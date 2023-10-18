@@ -7,8 +7,9 @@ class Public::CartItemsController < ApplicationController
     end
     
     def update
-     @cart_item = Cart_item.find(params[:id])
+     @cart_item = CartItem.find(params[:id])
      @cart_item.update(amount: params[:cart_item][:amount].to_i)
+     redirect_to public_cart_items_path
     end
 
     def create
