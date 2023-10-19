@@ -27,6 +27,7 @@
             <% end %>
           </td>
           <td><%= cart_item.subtotal %></td>
+          <% @sum+=cart_item.subtotal %>
           <td>
             <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete %>
           </td>
@@ -35,7 +36,7 @@
       </tbody>
     </table>
 
-合計金額<%= @cart_items.map {|cart_item| cart_item.subtotal}.sum %>
+合計金額<%= @sum %>
 
 <%= link_to " 買い物を続ける",'/' %>
 

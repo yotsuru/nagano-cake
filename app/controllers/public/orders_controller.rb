@@ -12,8 +12,9 @@ class Public::OrdersController < ApplicationController
     
     def confirm
       @cart_items = current_customer.cart_items.all
-      #@total_price = current_customer.cart_items.price(@cart_items)
+      @sum = 0
       @order = Order.new(order_params)
+      @order.postage = 800
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.receiver = current_customer.last_name + current_customer.first_name
@@ -41,7 +42,7 @@ class Public::OrdersController < ApplicationController
 private
 def order_params
  
-  params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+  params.require(:order).permit(:payment_method, :postal_code, :address, :receiver)
  
 end
 end

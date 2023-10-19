@@ -27,6 +27,7 @@
               </td>
               <td>
                 ¥<%= (cart.item.price * cart.amount * 1.1).floor.to_s(:delimited) %>
+                <% @sum+= (cart.item.price * cart.amount * 1.1).floor %>
               </td>
             </tr>
           <% end %>
@@ -40,11 +41,11 @@
           </tr>
           <tr>
             <th>商品合計</th>
-            <td><%#= total_price(@cart_items).to_s(:delimited) %></td>
+            <td><%= @sum.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%#= total_price(@order).to_s(:delimited) %></td>
+            <td><%= (@sum+@order.postage).to_s(:delimited) %></td>
           </tr>
       </table>
 

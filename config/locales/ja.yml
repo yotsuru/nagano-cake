@@ -4,6 +4,12 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+        ja:
+    order_detail:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+        ja:
   activerecord:
     errors:
       messages:
