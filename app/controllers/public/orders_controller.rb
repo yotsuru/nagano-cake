@@ -21,14 +21,11 @@ class Public::OrdersController < ApplicationController
     end
     
     def create
+      cart_items = current_customer.cart_items.all
       @order = current_customer.orders.new(order_params)
-      # カートの商品を確定済みテーブルに移動させる
-      #current_customer.cart_items.each do |cart_item|
-      # ロジック
       @order.save!
       redirect_to complete_public_orders_path
-      #end
-      
+      cart_items.destroy_all
     end
     
     def complete
