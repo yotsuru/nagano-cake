@@ -22,12 +22,13 @@ class Public::OrdersController < ApplicationController
     
     def create
       @order = current_customer.orders.new(order_params)
-      @order.save
-      redirect_to public_orders_complete_path
       # カートの商品を確定済みテーブルに移動させる
-      current_customer.cart_items.each do |cart_item|
+      #current_customer.cart_items.each do |cart_item|
       # ロジック
-      end
+      @order.save!
+      redirect_to complete_public_orders_path
+      #end
+      
     end
     
     def complete
@@ -42,7 +43,7 @@ class Public::OrdersController < ApplicationController
 private
 def order_params
  
-  params.require(:order).permit(:payment_method, :postal_code, :address, :receiver)
+  params.require(:order).permit(:payment_method, :postal_code, :address, :receiver, :total_price, :postage)
  
 end
 end

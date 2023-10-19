@@ -59,7 +59,7 @@
         <%= f.hidden_field :address %>
         <%= f.hidden_field :receiver %>
         <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :total_price %>
-        
+        <%= f.hidden_field :total_price, :value => @sum+@order.postage %>
+        <%= f.hidden_field :postage, :value => @order.postage %>
         <%= f.submit "注文を確定する" %>
       <% end %>

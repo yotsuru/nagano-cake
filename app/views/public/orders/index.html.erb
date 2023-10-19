@@ -19,7 +19,7 @@
     		        <td>
     		          <%= order.postal_code %><br>
     		          <%= order.address %><br>
-    		          <%= order.name %>
+    		          <%= order.receiver %>
     		        </td>
     		        <td>
     		          <% order.order_details.each do |order_detail| %>
@@ -30,7 +30,7 @@
     		          <%= order.total_price.to_s(:delimited) %>円
     		        </td>
     		        <td>
-       	          <%= link_to "注文詳細", customers_order_path %>
+       	          <%= link_to "注文詳細",  public_order_path(current_customer.id) %>
        	        </td>
               </tr>
             <% end %>
