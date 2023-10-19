@@ -15,7 +15,8 @@
           <% @cart_items.each do |cart| %>
             <tr>
               <td>
-                <%= attachment_image_tag( cart.item, :image, size: "60x50", fallback: "no_image.jpg") %>
+                <%= image_tag 'no_image', size: "50x50" %>
+                <%#= attachment_image_tag( cart.item, :image, size: "60x50", fallback: "no_image.jpg") %>
                 <%= cart.item.name %>
               </td>
               <td>
@@ -25,7 +26,7 @@
                   <%= cart.amount %>
               </td>
               <td>
-                ¥<%= (cart_item.price * cart_item.amount * 1.1).floor.to_s(:delimited) %>
+                ¥<%= (cart.item.price * cart.amount * 1.1).floor.to_s(:delimited) %>
               </td>
             </tr>
           <% end %>
@@ -39,23 +40,23 @@
           </tr>
           <tr>
             <th>商品合計</th>
-            <td><%= total_price(@cart_items).to_s(:delimited) %></td>
+            <td><%#= total_price(@cart_items).to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%= total_price(@order).to_s(:delimited) %></td>
+            <td><%#= total_price(@order).to_s(:delimited) %></td>
           </tr>
       </table>
 
 
 <h3>支払い方法</h3><%= @order.payment_method %>
 
-<h3>お届け先</h3><%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+<h3>お届け先</h3><%= "#{@order.postal_code} #{@order.address} #{@order.receiver}" %>
 
- <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
+ <%= form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
-        <%= f.hidden_field :@cart_items.item.name %>
+        <%= f.hidden_field :receiver %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>
         
