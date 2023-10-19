@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
     def create
       cart_items = current_customer.cart_items.all
       @order = current_customer.orders.new(order_params)
-      @order.save!
+      @order.save
       redirect_to complete_public_orders_path
       cart_items.destroy_all
     end
@@ -32,8 +32,10 @@ class Public::OrdersController < ApplicationController
     end
 
     def show
+     
 	    @order = Order.find(params[:id])
       @order_details = @order.order_details
+      
     end
 
 
