@@ -1,9 +1,10 @@
 <h2>注文履歴詳細</h2>
 
 <% if @order.present? %>
-    
-    注文情報
-  	    <table>
+  <div class="row">
+    <div class="col-lg-6">
+      注文情報
+      <table class="table table-hover table-inverse table-bordered mx-auto">
           <tbody>
               <tr>
                 <th>注文日</th>
@@ -22,12 +23,11 @@
               </tr>
            </tbody>
         </table>
+     </div>
    
-
-    
+     <div class="col-lg-6">
      請求情報
-       <table>
-         
+       <table class="table table-hover table-inverse table-bordered mx-auto">
             <tr>
               <th>商品合計</th>
               <td><%= (@order.total_price - @order.postage).to_s(:delimited) %></td>
@@ -40,12 +40,14 @@
               <th>ご請求額</th>
               <td><%= @order.total_price.to_s(:delimited) %></td>
             </tr>
-            
         </table>
+      </div>
+   </div>
    
-  
+  <div class="row">
+    <div class="col-lg-8">
     	注文内容
-        <table>
+       <table class="table table-hover table-inverse table-bordered mx-auto">
          <thead>
   	      <tr>
   	      	<th>商品</th>
@@ -65,13 +67,9 @@
           　<% end %>
           </tbody>
         </table>
+      </div>
+   </div>
         
-  
-    <% if customer_signed_in? %>
-      <%= link_to "注文履歴一覧へ戻る",  public_orders_path %>
     <% else %>
-      <%= link_to "会員詳細へ戻る", admin_customer_path %>
-    <% end %>
-  <% else %>
     <p>注文履歴がありません。</p>
   <% end %>
