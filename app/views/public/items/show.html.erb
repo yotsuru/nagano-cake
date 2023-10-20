@@ -1,10 +1,20 @@
- <h2><%= @item.name %></h2><br>
- <%= @item.introduction %>
- <h3>¥<%= (@item.price*1.1).floor.to_s(:delimited) %><span>（税込）</span></h3>
+ <div class="container">
+  <div class="row">
+   <div class="col-md-7">
+   <%= image_tag 'no_image', size: "380x330" %>
+   </div>
+   
+   <div class="col-md-5">
+     <h2><%= @item.name %></h2><br>
+     <%= @item.introduction %>
+     <h3>¥<%= (@item.price*1.1).floor.to_s(:delimited) %><span>（税込）</span></h3>
 
    
   <%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
               <%= f.hidden_field :item_id, :value => @item.id %>
               <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-              <%= f.submit 'カートに入れる' %>
+              <%= f.submit 'カートに入れる', class: "btn btn-success" %>
             <% end %>
+    </div>
+  </div>
+</div>

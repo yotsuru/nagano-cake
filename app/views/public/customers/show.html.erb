@@ -1,10 +1,12 @@
+<div class="container">
+  <div class="row">
 <h2>マイページ</h2>
 
-<h4>登録情報</h4>
+<span>登録情報</span>
 
-<%= link_to "編集する", customers_information_edit_public_customers_path %>
+<span><%= link_to "編集する", customers_information_edit_public_customers_path, class: "btn btn-success" %></span>
 
-<table>
+<table class="table table-bordered table-condensed">
         <tr>
           <th>お名前</th>
           <td><%= @customer.last_name + @customer.first_name %></td>
@@ -30,5 +32,10 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-      
-     注文履歴<%= link_to " 一覧を見る", public_orders_path %>
+     
+     <div>  
+     注文履歴<%= link_to " 一覧を見る", public_orders_path,class: "glyphicon glyphicon-folder-open btn btn-info" %>
+     </div>
+  
+  </div>
+</div>

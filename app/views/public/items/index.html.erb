@@ -1,6 +1,7 @@
-<h2>商品一覧</h2>
-(全<%= @items.count %>件)
+<div class="row">
+	<h2 class="text-center">商品一覧</h2>
 
+<span>(全<%= @items.count %>件)</span>
 
 
 <% @items.each do |item| %>
@@ -17,4 +18,6 @@
           <% end %>
         
 
-<%= paginate(@items) %>
+   <div class="text-center"><%= paginate(@items) %></div>
+   
+</div>
