@@ -62,7 +62,7 @@
   	        <td><%= order_detail.item.name %></td>
   	        <td><%= (order_detail.item.price).to_s(:delimited) %></td>
   	        <td><%= order_detail.amount %></td>
-  	        <td><%= total_price(order_detail).to_s(:delimited) %></td>
+  	        <td><%= (order_detail.subtotal).to_s(:delimited) %></td>
             </tr>
           　<% end %>
           </tbody>
