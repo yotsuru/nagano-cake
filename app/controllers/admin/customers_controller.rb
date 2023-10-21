@@ -22,7 +22,7 @@ class Admin::CustomersController < ApplicationController
 		else
 			render "edit"
 		end
-    end          
+  end          
 
 
   private
