@@ -1,5 +1,4 @@
-<div class="container">
-	<div class="row">
+
 		<div class="col-xs-12">
      ようこそ、ながのCAKEへ！<br>
      このサイトは、ケーキ販売のECサイトになります。<br>
@@ -7,5 +6,17 @@
      購入には会員登録が必要になります。<br>
         </div>
      <h4>新着商品</h4>
-   </div>
-</div>
+      <% @items.each do |item| %>
+          
+           
+              <%= link_to public_item_path(item) do %>
+              <%= image_tag 'no_image', size: "180x130" %>
+               
+              <% end %>
+              
+              <%= item.name %>
+              ¥<%= (item.with_tax_price).floor.to_s(:delimited)%>(税込)
+            
+          <% end %>
+     
+  
