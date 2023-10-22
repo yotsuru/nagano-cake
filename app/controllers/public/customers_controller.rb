@@ -13,7 +13,6 @@ class Public::CustomersController < ApplicationController
     def update
         @customer = current_customer
         if @customer.update(customer_params)
-        flash[:update] = "You have updated user info successfully."
         redirect_to customers_mypage_public_customers_path
         else
         render 'edit'
@@ -28,7 +27,6 @@ class Public::CustomersController < ApplicationController
        @customer = current_customer
        @customer.update(is_valid: false)
        reset_session
-       flash[:notice] = "退会処理を実行いたしました"
        redirect_to root_path
     end
     
