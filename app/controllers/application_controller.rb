@@ -19,8 +19,12 @@ protected
   end
   
   def after_sign_out_path_for(resource)
-      root_path
+     if resource == :admin
+      admin_session_path
+     else root_path
+     end
   end
+
 
 protected
 
