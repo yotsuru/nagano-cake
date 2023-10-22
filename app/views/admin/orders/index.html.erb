@@ -1,6 +1,6 @@
 <h2>注文履歴一覧</h2>
 
-<table>
+ <table class="table table-hover table-bordered table-condensed">
 		  <thead>
 		    <tr>
 		      <th>購入日時</th>
@@ -16,7 +16,7 @@
 		        <%= link_to admin_order_path(order) do %><%= order.created_at.strftime('%Y/%m/%d%T') %><% end %>
 		        </td>
 		        <td><%= order.receiver %></td>
-		        <td><%= order.order_details.count %></td>
+		        <td><%= order.order_details.sum(:amount) %></td>
     	        <td></td>
      	      </tr>
 		    <% end %>
