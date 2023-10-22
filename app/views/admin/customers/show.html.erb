@@ -1,7 +1,7 @@
 <h2><%= (@customer.last_name + @customer.first_name) %>さんの会員詳細</h2>
 
 
-<table class="table customer-table">
+<table class="table table-bordered table-condensed">
    <tr><th></th><th></th></tr>
    
    <tr><td><h3>会員ID</h3></td><td><%= @customer.id %></td></tr>
@@ -21,12 +21,12 @@
    <tr>
        <td><h3>会員ステータス</h3></td>
        <td><% if @customer.is_valid == true %>
-        <span class="bg-danger">退会済</span>
+        <span class="text-muted">退会</span>
            <% else %>
-        <span class="bg-primary">有効</span>
+        <span class="text-success">有効</span>
            <% end %>
        </td></tr>
    
 </table>
 
-<%= link_to "編集する",edit_admin_customer_path(@customer) %>
+<%= link_to "編集する",edit_admin_customer_path(@customer), class: " btn btn-success" %>
